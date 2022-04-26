@@ -18,7 +18,7 @@
     "herokuLogs": "heroku logs --tail",
     "herokuNames": "heroku apps:rename qrchecksapp",
     "herokuSetNODE_ENV": "heroku config:set NODE_ENV=production",
-    "herokuGitRemote": "heroku git:remote -a truhabit",
+    "herokuGitRemote": "heroku git:remote -a truh",
     "herokuDatabase": "heroku config:set DATABASE='mongodb+srv://saboor_db:<PASSWORD>@cluster0.qzgub.mongodb.net/natours?retryWrites=true'",
     "herokuRegions": "heroku regions --json",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
