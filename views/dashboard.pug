@@ -1,0 +1,19 @@
+extends base
+
+block content
+  section.content
+    .container-fluid
+      .row
+        .col-lg-3.col-sm-6
+          .counter-box.text-center.white
+            .text.font-17.m-b-5 Total Users
+            h3.m-b-10= totals.user
+        
+        .col-lg-3.col-sm-6
+          .counter-box.text-center.white
+            .text.font-17.m-b-5 Total Orders
+            h3.m-b-10= totals.order
+        .col-lg-3.col-sm-6
+          .counter-box.text-center.white
+            .text.font-17.m-b-5 Total Products
+            h3.m-b-10= totals.product

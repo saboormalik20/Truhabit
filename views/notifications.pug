@@ -1,0 +1,35 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row
+        .col-md-12
+          .form-group
+            label(style='width: 100%') Select To 
+            select#multiple.js-states.form-control(multiple='')
+              each item in data
+                option(value=`${item._id}`)= item.name
+              
+          .form-group
+            span.kalak(style='\
+            background-color: #7afb64;\
+            color: white;\
+            padding: 5px;\
+            border-radius: 5px;\
+            margin-top: 10px;\
+            ') Select All
+          .form-group
+             label(style='width: 100%') Title 
+             input.form-control.alltext(type='text')
+          .form-group
+             label(style='width: 100%') Body 
+             textarea.allareas(name='', id='', style='background-color: white !important; height: 150px')
+          button.okfinish(type='btn ', style='\
+          background-color: rgb(56, 250, 98);\
+          border: none;\
+          color: white;\
+          padding: 10px 20px;\
+          border-radius: 10px;\
+          font-size: 15px;\
+          ')
+            | Submit

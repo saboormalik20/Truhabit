@@ -1,0 +1,59 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row.clearfix
+        // Line Chart
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+          .card.pt-4
+            .body
+              .d-flex.flex-wrap.align-items-center.justify-content-between
+                div(style='margin-top: -10px')
+                  button.btn.btnSubmit.addprodu.bgGreenn.text-light(style="background-color:#004e3f")
+                    | Add Product
+
+              .row.mt-4
+                each item in products
+                  .col-md-3.col-sm-6.ProductView(data-id=`${item._id}`)
+                    .product-grid
+                      .product-image
+                        a(href='#')
+                          img.pic-1.picHeight(src=`https://rebalance.dejuretechnologies.com${item.photo}`, alt='')
+                      .product-content
+                        h3.title
+                          a(href='#')= item.name
+                        .price.color_point= `${item.points} points`
+                        div(style='height: 10px')
+      
+      #AdisModal.modal
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Add Product
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              .form-group
+                label(style="font-weight:900") Image
+                input.form-control.edasaduimage(type="file")
+              .form-group
+                label(style="font-weight:900") Name
+                input.form-control.edasaduname(type="text",placeholder="Please Enter Name")
+              .form-group
+                label(style="font-weight:900") Description
+                textarea.form-control.edasadudesc(name="", cols="30", rows="4") 
+              .form-group
+                label(style="font-weight:900") Points
+                input.form-control.edasadupoints(type="number",placeholder="Please Enter Points")
+            // Modal footer
+            .modal-footer
+              button.btn.edasaduonebutap.whattoupd.pt-3.userupdsss.yes.text-light(type='button',style="background-color:#224e41")
+                span.noload Create
+              button.btn.twobutapop.d-none.text-light(type='button',style="background-color:#224e41; padding-right:10px")
+                span.noloadpop
+                .spinner-border.loadpop.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel

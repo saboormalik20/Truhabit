@@ -1,0 +1,154 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(content='width=device-width, initial-scale=1', name='viewport')
+  title Shine-Express Admin
+  // Favicon
+  link(rel='icon', href='/images/favicon.ico', type='image/x-icon')
+  // Plugins Core Css
+  link(href='/css/app.min.css', rel='stylesheet')
+  link(href='/css/form.min.css', rel='stylesheet')
+  // Custom Css
+  link(href='/css/style.css', rel='stylesheet')
+  // You can choose a theme from css/styles instead of get all themes
+  link(href='/css/styles/all-themes.css', rel='stylesheet')
+  link(href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css",rel="stylesheet")
+  style.
+    .kalak:hover {
+      cursor: pointer;
+    }
+    .select2-container--default .select2-selection--multiple {
+      min-height: 20px !important;
+    }
+    .as{
+      position: fixed;
+      top: 0%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      margin: auto !important;
+      background-color: #2bbbad;
+      width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      height: 70px;
+      z-index: 999999;
+      display: none;
+      filter: blur(0px) !important;
+      color:white;
+    }
+    .anim {
+    display: flex !important;
+    padding: 10px;
+    text-align: center;
+    animation-name: example;
+    animation-duration: 1s;
+    }
+    .dnones{
+      display: none
+    }
+div(class="as")
+  | Password is same
+// Page Loader
+.page-loader-wrapper
+  .loader
+    .m-t-30
+      img.loading-img-spin(src='/images/loading.png', width='20', height='20', alt='admin')
+    p Please wait...
+// #END# Page Loader
+// Overlay For Sidebars
+.overlay
+// #END# Overlay For Sidebars
+// Top Bar
+body.light
+  nav.navbar
+    .container-fluid
+      .navbar-header
+        a.navbar-toggle.collapsed(href='#', onclick='return false;', data-toggle='collapse', data-target='#navbar-collapse', aria-expanded='false')
+        a.bars(href='#', onclick='return false;')
+        a.navbar-brand(href='index-2.html')
+          img(src='/img/Logo1.png', alt='')
+          span.logo-name Rebalance
+      #navbar-collapse.collapse.navbar-collapse
+        ul.pull-left
+          li
+            a.sidemenu-collapse(href='#', onclick='return false;')
+              i.material-icons reorder
+        ul.nav.navbar-nav.navbar-right
+          // Full Screen Button
+          li.fullscreen
+            a.fullscreen-btn(href='javascript:;')
+              i.fas.fa-expand
+          // #END# Full Screen Button
+          li.dropdown.user_profile
+            a.dropdown-toggle(href='#', onclick='return false;', style='margin-top: 19px', data-toggle='dropdown', role='button')
+              i.fas.fa-chevron-circle-down
+            ul.dropdown-menu.pullDown
+              li.body
+                ul.user_dw_menu
+                  li
+                    a(href='#', onclick='return false;')
+                      i.material-icons power_settings_new
+                      | Logout
+          // #END# Tasks
+  // #Top Bar
+  div
+    // Left Sidebar
+    aside#leftsidebar.sidebar
+      // Menu
+      .menu
+        ul.list
+          li.active
+            a(href='index.html')
+              i.fas.fa-tachometer-alt
+              span Dashboard
+
+          li
+            a(href='users.html')
+              i.fas.fa-users
+              span Users
+          li
+            a(href='drivers.html')
+              i.material-icons directions_bike
+              span Points
+          li
+            a(href='products.html')
+              i.fas.fa-shopping-cart
+              span Products
+          li
+            a(href='orders.html')
+              i.fas.fa-list-ul
+              span orders
+
+          li
+            a(href='country.html')
+              i.fas.fa-globe-americas
+              span country
+          li
+            a(href='store.html')
+              i.fas.fa-store
+              span store
+          li
+            a.waves-effect.waves-block(href='/Notifications/NotificationIndex')
+              i.fas.fa-bell
+              span Notifications
+
+      // #Menu
+  block content
+    h1 ahah
+
+  script(src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js")
+  script(src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js")
+  script(src="https://www.gstatic.com/firebasejs/7.11.0/firebase-firestore.js")
+  script(src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js")
+  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script(type="module",src='/js/index.js')
+  script(src='/js/app.min.js')
+  script(src='/js/table.min.js')
+  // Custom Js
+  script(src='/js/admin.js')
+  script(src='/js/pages/tables/jquery-datatable.js')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js")
+  script(type="module",src='/js/manualjs.js')
+  // Demo Js

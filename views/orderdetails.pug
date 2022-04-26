@@ -1,0 +1,113 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12
+          .card
+            .card-body
+              .wrapper.wrapper-content.animated.fadeInRight
+                .row
+                  .col-md-9
+                    .ibox
+                      .ibox-title
+                        h5 Your Order Detail
+                      .ibox-content
+                        .table-responsive
+                          table.table.shoping-cart-table
+                            tbody
+                              each item in product.products
+                                tr
+                                  td
+                                    .cart-product-imitation
+                                      img(src=`https://rebalance.dejuretechnologies.com${item.fullproduct.photo}`, style='\
+                                      width: 80px !important;\
+                                      height: 80px !important;\
+                                      ', alt='')
+                                  td.desc
+                                    h3
+                                      a.text-navy(href='#')=item.fullproduct.name
+
+                                    .small.m-b-none
+                                      p= item.fullproduct.description
+                                  td
+                                    h4.d-flex
+                                      span= item.fullproduct.points
+                                      span points
+                      //
+                        <div class="ibox-content">
+                        <div class="table-responsive">
+                        <table class="table shoping-cart-table">
+                        <tbody>
+                        <tr style="margin-top:200px !important;">
+                        <td>
+                        <div class="cart-product-imitation">
+                        <img src="" style="width:100px; height:100px;"
+                        alt="">
+                        </div>
+                        </td>
+                        <td class="desc">
+                        <h3>
+                        <a href="#" class="text-navy">
+                        </a>
+                        </h3>
+                        <p class="small">
+                        <strong>Description:</strong>
+                        </p>
+                        <p class="small">
+                        <strong>Seller:</strong> XYZ Infotech
+                        </p>
+                        <div class="small m-b-none">
+                        <p>Delivery by Wed, Nov 14 | Free</p>
+                        </div>
+                        </td>
+                        <td>
+                        <h4 class="d-flex">
+                        <span></span>
+                      //
+                        </h4>
+                        </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                         </div>
+                        </div>
+                  .col-md-3
+                    .ibox
+                      .ibox-title
+                        h5 Order Details
+                      .ibox-content
+                        table
+                          tbody
+                            tr
+                              th User Name
+                              th.font-bold
+                                span.d-flex
+                                  span= product.user.name
+                            tr
+                              th Time
+                              th.font-bold
+                                span.d-flex
+                                  -let  newTime= Number(String(new Date(Number(product.CreatedAt))).split(":")[0].split(" ")[4])>12? Number(String(new Date(Number(product.CreatedAt))).split(":")[0].split(" ")[4])-12:Number(String(new Date(Number(product.CreatedAt))).split(":")[0].split(" ")[4])
+                                  span= `${String(String(new Date(Number(product.CreatedAt))).split(":")[0]).slice(0,-1).slice(0,-1)} ${newTime}:${String(new Date(Number(product.CreatedAt))).split(":")[1]}:${String(new Date(Number(product.CreatedAt))).split(":")[2].split(" ")[0]}`
+                            tr
+                              th Total Points
+                              th.font-bold
+                                span.d-flex
+                                  span= product.points
+                                  span points
+                            tr
+                              th Address
+                              th.font-bold
+                                span.d-flex
+                                  span= product.address
+                            tr
+                              th Phone Number
+                              th.font-bold
+                                span.d-flex
+                                  span=product.phone
+                            tr
+                              th Email
+                              th.font-bold
+                                span.d-flex
+                                  span= product.email

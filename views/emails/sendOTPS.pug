@@ -1,0 +1,105 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Document
+  style.
+    @media only screen and (min-width: 400px) and (max-width: 600px) {
+    .orderid {
+    font-size: 40px;
+    }
+    }
+    @media only screen and (min-width: 200px) and (max-width: 400px) {
+    .orderid {
+    font-size: 30px;
+    }
+    }
+    @media only screen and (min-width: 590px) and (max-width: 790px) {
+    .rowbc {
+    width: 500px !important;
+    }
+    }
+    @media only screen and (min-width: 443px) and (max-width: 590px) {
+    .rowbc {
+    width: 400px !important;
+    }
+    }
+    @media only screen and (min-width: 343px) and (max-width: 443px) {
+    .rowbc {
+    width: 300px !important;
+    }
+    }
+    @media only screen and (min-width: 243px) and (max-width: 343px) {
+    .rowbc {
+    width: 280px !important;
+    }
+    }
+    @media only screen and (min-width: 243px) and (max-width: 743px) {
+    .whiting {
+    font-size: 10px !important;
+    }
+    }
+  // Latest compiled and minified CSS
+.container-fluid
+  table
+    tr(style='margin: 0px; padding: 0px')
+      td(style='\
+      color: rgb(78, 78, 78);\
+      font-size: 20px;\
+      padding: 1px 10px;\
+      width: 100%;\
+      color: white;\
+      background-color: #224e41;\
+      height: 120px;\
+      display: flex;\
+      align-items: center;\
+      ')
+        span Order no #{orderId}
+    tr
+      td(style='color: rgb(78, 78, 78); font-size: 20px; padding: 5px 20px')
+        | You have received the following order from #{username}
+        span.whiting(style='color: white')
+          | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae
+          | maxime vitae excepturi quos dolorum, aspernatur recusandae
+          | libero,or.
+    tr
+      td(style='\
+      color: #224e41 !important;\
+      font-size: 20px;\
+      padding: 5px 20px;\
+      ')
+        span(style='font-weight: 500') [Order #{orderId}]
+        span(style='font-weight: 700') (#{time})
+  .col-md-12
+  div
+    table(style='margin-top: 20px !important')
+      thead
+        tr
+          th(style='\
+          width: 300px;\
+          text-align: left;\
+          font-size: 20px;\
+          padding: 10px 20px;\
+          ')
+            | Products
+          th(style='\
+          width: 300px;\
+          padding: 10px 20px;\
+          text-align: left;\
+          font-size: 20px;\
+          ')
+            span(style='margin-left: 20px !important') Quantity
+          th(style='\
+          width: 300px;\
+          text-align: left;\
+          font-size: 20px;\
+          padding: 10px 20px;\
+          ')
+            | Prices
+        each item in products
+          tr
+            td(style='width: 300px; padding: 5px 20px')= item.product
+            td(style='width: 300px; padding: 5px 20px')
+              span(style='margin-left: 20px !important; padding: 5px 20px')= item.quantity
+            td(style='width: 300px; padding: 10px 20px')= item.price

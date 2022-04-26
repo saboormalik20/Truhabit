@@ -1,0 +1,32 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12
+          .card
+            .body
+              .table-responsive
+                table.table.table-hover.js-basic-example.contact_list
+                  thead
+                    tr
+                      th Order Id
+                      th User Name
+                      th Total Points
+                      th Item Count
+                      th Store Name
+                      th Order Type
+                      th Action
+                  tbody
+                    -let i=1
+                    each item in orders
+                      tr
+                        td.table-img= i++
+                        td= item.user.name
+                        td= item.points
+                        td= item.products.length
+                        td= item.storename
+                        td= item.ordertype
+                        td
+                          a.btn.text-light.btn-small(href=`/orderdetails/${item._id}`,style="background-color:#004e3f")
+                            | Details

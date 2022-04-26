@@ -1,0 +1,94 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          button.addcountryModal.btn.addcountrybtn(type='button', style='background-color: #224e41; color: white')  
+            | Add Country
+          .card
+            .body
+              .table-responsive
+                table.table.table-hover.js-basic-example.contact_list
+                  thead
+                    tr
+                      th Country Id
+                      th Country Name
+                  tbody
+                    -let i =1
+                    each item in countries
+                      tr
+                        td.table-img= i++
+                        td= item.name
+        .col-xs-6.col-sm-6.col-md-6.col-lg-6
+          button.btn.addregionbtn(type='button', style='background-color: #224e41; color: white')
+            | Add Region
+          .card
+            .body
+              .table-responsive
+                table.table.table-hover.js-basic-example.contact_list
+                  thead
+                    tr
+                      th Region Id
+                      th Region Name
+                      th Country Name
+                  tbody
+                    -let k=1
+                    each item2 in regions
+                      tr
+                        td.table-img= k++
+                        td= item2.name
+                        td= item2.country
+      #myCountryModal.modal
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Add Country
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              .form-group
+                label(style="font-weight:900;font-size:15px") Name
+                input.form-control.edasname(type="text",placeholder="Please Enter Country Name")
+
+            // Modal footer
+            .modal-footer
+              button.btn.onebutap.whattoupd.pt-3.countryupds.yes.text-light(type='button',style="background-color:#224e41")
+                span.noload Add
+              button.btn.twobutap.d-none.text-light(type='button',style="background-color:#224e41; padding-right:10px")
+                span.noloadp
+                .spinner-border.loadp.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel
+      #myRegionModal.modal
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Add Region
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              .form-group
+                label(style="font-weight:900;font-size:15px") Name
+                input.form-control.edasponame(type="text",placeholder="Please Enter Country Name")
+              .form-group
+                label(style="font-weight:900;font-size:15px") Country
+                select.intosthat.form-control
+                  option(value="nocountry") Select Country
+                  option ajkjaja
+                  option ajkjaja
+            // Modal footer
+            .modal-footer
+              button.btn.onepbutap.whattoupd.pt-3.regionupds.yes.text-light(type='button',style="background-color:#224e41")
+                span.noload Add
+              button.btn.twopbutap.d-none.text-light(type='button',style="background-color:#224e41; padding-right:10px")
+                span.noloadpp
+                .spinner-border.loadpp.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel                

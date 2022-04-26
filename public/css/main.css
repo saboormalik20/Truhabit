@@ -1,0 +1,83 @@
+/* Promo */
+.bg-yellow {
+  background-color: yellow;
+  width: 100%;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.imgPromo {
+  height: 30rem;
+  transform: rotate(10deg);
+  transition: all 1s ease;
+}
+.imgPromo:hover {
+  transform: rotate(0deg);
+}
+.Discount {
+  position: absolute;
+  padding: 10px !important;
+  border-radius: 5px;
+  margin: 0 !important;
+  right: 0;
+  top: 0;
+  background-color: white;
+}
+.blackLine {
+  background-color: black;
+  width: 200px;
+  height: 3px;
+  margin: auto;
+}
+/* .navbar-nav .user_profile .dropdown-toggle {
+  padding: none;
+} */
+/* Promo End */
+
+/* Sign in  */
+
+.headerIcon {
+  text-decoration: none !important;
+  color: black !important;
+}
+.LogoTitle {
+  font-size: 25px !important;
+}
+.signinButton {
+  background-color: #004e3f;
+  height: 50px !important;
+  width: 90px !important;
+}
+.signinform {
+  border-radius: 25px;
+}
+/* Sign in end */
+
+/* Products  */
+.SearchIcon {
+  font-size: 20px !important;
+  background-color: #004e3f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+/* Products End */
+.theme-black .sidebar .menu .list li.active > :first-child span {
+  color: red !important;
+}
+.theme-black .sidebar .menu .list li:hover span,
+.theme-black .sidebar .menu .list li:hover i {
+  color: red !important;
+}
+/* Order */
+.bgGreenn {
+  background-color: #004e3f !important;
+}
+.colorGreenn {
+  color: #004e3f !important;
+}
+.color_point {
+  color: #b3a168 !important;
+}
+/* Order End  */

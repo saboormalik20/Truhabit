@@ -1,0 +1,75 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row.px-5
+        .col-md-12.d-flex.justify-content-end 
+          button.btn.btn-success.openedit(data-id=`${product._id}`) Edit 
+          button.btn.btn-danger.opendulopa.ml-2(data-id=`${product._id}`) Delete 
+      .row.clearfix.mt-4
+        // Line Chart
+        .row
+          // <a href="index.html">c</a>
+          .col-md-5
+            .card.bg-overflow
+              img.pic-1(src=`https://rebalance.dejuretechnologies.com${product.photo}`, alt='')
+          .col-md-6.mx-2.py-5.details
+            .yellow-circle
+            // end of ratings
+            h1.text-uppercase.py-2= product.name
+            h2.py-2.color_point
+              span= `${product.points} Points` 
+            p.lead.product-description.text-muted.py-2= product.description
+      #myEdosModal.modal
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Edit Product
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              .form-group
+                label(style="font-weight:900") Image
+                input.form-control.edupimage(type="file")
+              .form-group
+                label(style="font-weight:900") Name
+                input.form-control.edasname(type="text",placeholder="Please Enter Name")
+              .form-group
+                label(style="font-weight:900") Description
+                textarea.form-control.edasdesc(name="", cols="30", rows="4") 
+              .form-group
+                label(style="font-weight:900") Points
+                input.form-control.edaspoints(type="number",placeholder="Please Enter Points")
+            // Modal footer
+            .modal-footer
+              button.btn.onebutap.whattoupd.pt-3.userupdsss.yes.text-light(type='button',style="background-color:#224e41")
+                span.noload Update
+              button.btn.twobutap.d-none.text-light(type='button',style="background-color:#224e41; padding-right:10px")
+                span.noloadp
+                .spinner-border.loadp.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel
+      #mydulasModal.modal
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Delete Product
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              h2 Are you sure you want to delete this product?
+            // Modal footer
+            .modal-footer
+              button.btn.onebutapDelas.whattoupd.pt-3.yes.text-light(type='button',style="background-color:red")
+                span.noload Delete
+              button.btn.twobutapdelopa.d-none.text-light(type='button',style="background-color:#224e41; padding-right:10px")
+                span.noloadpdelopa
+                .spinner-border.loadpdelopa.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel

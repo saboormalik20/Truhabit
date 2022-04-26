@@ -1,0 +1,94 @@
+extends base
+block content
+  section.content
+    .container-fluid
+      .row
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12
+          .card
+            .body
+              .table-responsive
+                table.table.table-hover.js-basic-example.contact_list
+                  thead
+                    tr
+                      th User Id
+                      th User Name
+                      th Password
+                      th Email
+                      th Country
+                      th Points
+                      th Action
+                  tbody
+                    -let i=1
+                    each item in users
+                      tr
+                        td= i++
+                        td= item.name
+                        td= item.email
+                        td= item.country
+                        td.color_point= item.points
+                        td
+                          button.btn.tblEdosBtn.edit.colorGreenn(data-edi=`${item._id}`)
+                            i.material-icons mode_edit
+                          button.btn.tblActnBtn.del.text-danger(type='button',data-del=`${item._id}`)
+                            i.material-icons delete
+
+      #myDelModal.modal(style='padding-top: 200px')
+        .modal-dialog
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Confirm Delete
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              p(style='font-size: 24px')
+                | Are you sure you want to delete this user?
+            // Modal footer
+            .modal-footer
+              button.btn.onebuta.btn-danger.pt-3.userdels.yes(type='button')
+                span.noload Delete
+              button.btn.btn-danger.pr-3.twobuta.d-none.text-light(type='button')
+                span.noload
+                .spinner-border.load.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel
+      #myEdosModal.modal
+        .modal-dialog.modal-dialog-centered
+          .modal-content
+            // Modal Header
+            .modal-header
+              h2.modal-title Edit User
+              button.close(type='button', data-dismiss='modal')
+                | &times;
+            // Modal body
+            .modal-body
+              .form-group
+                label Name
+                input.form-control.edasname(type="text",placeholder="Please Enter Name")
+              .form-group
+                label Email
+                input.form-control.edasemail.text-dark(type="text",placeholder="Please Enter Eamil",readonly,disabled)
+              .form-group
+                label Password
+                input.form-control.edaspassword(type="text",placeholder="Please Enter Password")
+              .form-group
+                label Points
+                input.form-control.edaspoints(type="number",placeholder="Please Enter Points")
+              .form-group
+                label Country
+                select.inputCountry.form-control
+                  option UK
+                  option USA
+                  option SOUTH AFRICA
+            // Modal footer
+            .modal-footer
+              button.btn.onebutap.whattoupd.pt-3.userupds.yes.text-light(type='button',style="background-color:#224e41")
+                span.noload Update
+              button.btn.twobutap.d-none.text-light(type='button',style="background-color:#224e41; padding-right:10px")
+                span.noloadp
+                .spinner-border.loadp.d-none(role='status', style="color:white")
+                  span.sr-only    
+              button.btn.btn-gray.no(type='button', data-dismiss='modal')
+                | Cancel
