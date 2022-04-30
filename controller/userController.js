@@ -308,7 +308,7 @@ exports.updateSocialUser = catchAsync(async (req, res, next) => {
   ]);
 
   if (req.file) {
-    filteredBody.photo = `/img/users${req.file.filename}`;
+    filteredBody.photo = `/img/users/${req.file.filename}`;
   }
 
   const keys = Object.keys(filteredBody);
@@ -414,6 +414,56 @@ exports.sharePost = catchAsync(async (req, res, next) => {
     data: post,
   });
 });
+exports.addHWGA = catchAsync(async (req, res, next) => {
+  let BMR = "";
+  console.log(req.user.id);
+  if (req.file) req.body.photo = req.file.filename;
+  let newobj = {};
+  let { height, weight, age, gender } = req.body;
+  console.log(height, weight, age, gender);
+  newobj.height = height;
+  newobj.weight = weight;
+  newobj.age = age;
+  newobj.gender = gender;
+  if (!height || !weight || !age || !gender) {
+    return next(new AppError("data is missing !", 401));
+  }
+  if (gender === "male") {
+    let W = Number(weight) * 6.23;
+    // console.log(W);
+    let H = Number(height) * 12.7;
+    // console.log(H);
+    let A = Number(age) * 6.8;
+    // console.log(A);
+    BMR = 66 + W + H - A;
+    BMR = BMR * 1.2; // for no excercise
+    BMR = BMR * 6; // Total per week
+    BMR = BMR / 7; // Total per week
+    // console.log(BMR);
+  } else if (gender === "female") {
+    let W = Number(weight) * 4.35;
+    // console.log(W);
+    let H = Number(height) * 4.7;
+    // console.log(H);
+    let A = Number(age) * 4.7;
+    // console.log(A);
+    BMR = 655 + W + H - A;
+    BMR = BMR * 1.2; // for no excercise
+    // console.log(BMR);
+    BMR = BMR * 6; // Total per week
+    BMR = BMR / 7; // Total per day
+    // console.log(BMR);
+  }
+  req.user.height = Number(height);
+  req.user.weight = Number(weight);
+  req.user.age = Number(age);
+  req.user.gender = gender;
+  await req.user.save();
+  res.status(200).json({
+    status: "success",
+    BMR: Number(BMR.toFixed(2)),
+  });
+});
 exports.addpost = catchAsync(async (req, res, next) => {
   console.log(req.files);
   if (req.files.photo) {
@@ -476,6 +526,22 @@ exports.getAllStories = catchAsync(async (req, res, next) => {
             CreatedAt: "$CreatedAt",
           },
         },
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        as: "_id",
+        let: { user: "$_id" }, // consider as foreign key
+
+        pipeline: [
+          {
+            $match: {
+              $expr: { $eq: ["$$user", "$_id"] }, // $_id consider as foreign key
+            },
+          },
+          { $project: { name: 1, photo: 1 } },
+        ],
       },
     },
   ]);
@@ -866,13 +932,32 @@ exports.getPostById = catchAsync(async (req, res, next) => {
     data: post,
   });
 });
+exports.deleteStoryById = catchAsync(async (req, res, next) => {
+  let story = await Story.findById(req.params.id);
+  await story.remove();
+  res.status(200).json({
+    status: "success",
+    message: "Story Deleted",
+  });
+});
+exports.deletePostById = catchAsync(async (req, res, next) => {
+  let post = await Post.findById(req.params.id);
+  await post.remove();
+  res.status(200).json({
+    status: "success",
+    message: "Post Deleted",
+  });
+});
 exports.getMyPosts = catchAsync(async (req, res, next) => {
+  let skip = +req.params.stage - 1 * 5;
   let post = await Post.aggregate([
     {
       $match: {
         postedBy: req.user._id,
       },
     },
+    { $skip: skip },
+    { $limit: 5 },
     {
       $addFields: {
         isLiked: {
@@ -1166,7 +1251,7 @@ exports.genderanddob = catchAsync(async (req, res, next) => {
     }
   }
   if (req.file) {
-    bodyenter.photo = `/img/users${req.file.filename}`;
+    bodyenter.photo = `/img/users/${req.file.filename}`;
   }
   const user = await User.findByIdAndUpdate(req.user._id, bodyenter, {
     new: true,

@@ -111,6 +111,27 @@ router
     userController.getAllStories
   );
 router
+  .route("/deleteStoryById/:id")
+  .post(
+    userController.protect(User),
+    userController.uploadPhotoVideoPost,
+    userController.deleteStoryById
+  );
+router
+  .route("/addHWGA")
+  .patch(
+    authenticationController.protect(User),
+    userController.uploadUserPhoto,
+    userController.addHWGA
+  );
+router
+  .route("/deletePostById/:id")
+  .post(
+    userController.protect(User),
+    userController.uploadPhotoVideoPost,
+    userController.deletePostById
+  );
+router
   .route("/changepassword")
   .patch(
     userController.protect(User),
@@ -153,7 +174,7 @@ router
     userController.getPostById
   );
 router
-  .route("/getMyPosts")
+  .route("/getMyPosts/:stage")
   .get(
     userController.protect(User),
     userController.uploadUserPhoto,
